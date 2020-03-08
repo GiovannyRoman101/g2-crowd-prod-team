@@ -1,8 +1,8 @@
 import React from 'react'
 
-const MemberDetail =({team_member,vote, onClick})=>{
+const MemberDetail =({team_member,vote, onClick,isSelected})=>{
 	const {name, image_url, title, bio} = team_member
-	const {detailContainerStyle,pictureContainerStyle,pictureStyle,
+	const {detailContainerStyle,pictureContainerStyle,pictureStyle, textStyle,
 		textContainerStyle,nameStyle, titleStyle, votingStyle, votingInfoStyle } = styles
 	return (
 		<div style = {detailContainerStyle}>
@@ -14,8 +14,8 @@ const MemberDetail =({team_member,vote, onClick})=>{
 				<p style = {nameStyle}>{name}</p>
 				<p style = {titleStyle}>{title}</p>
 				<p>{bio}</p>
-				<p style = {votingInfoStyle}>want to work with {name}?  <button onClick= {onClick} >Yes!</button></p>
-				<p> <p style= {votingStyle}>{vote}</p> people have said Yes!</p>
+				<p style = {votingInfoStyle}>want to work with {name}?  <button onClick= {onClick} disabled ={isSelected}>Yes!</button></p>
+				<div style= {votingStyle}>{vote} </div><p style= {textStyle}>  &nbsp;people have said Yes!</p>
 			</div>
 		</div>
 	)
@@ -55,14 +55,17 @@ const styles ={
 		alignItems:'center'
 	},
 	votingInfoStyle:{
-		
 		fontWeight:'bold'
 	}
 	,
 	votingStyle:{
 		display:'inline-block',
 		fontFamily: 'courier',
-		fontWeight:'bold'
+		fontWeight:'bold',
+	},
+	textStyle:{
+		
+		display:'inline-block',
 	}
 }
 
